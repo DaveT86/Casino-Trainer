@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Game Homepage</title>
+        <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Link to your CSS -->
+    </head>
+<h1>Math Trainer</h1>
+<button onclick="startNormalMode()">Normal Mode</button>
+<button onclick="startRouletteMode()">Roulette Mode</button>
+
+<button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button> <!-- Fullscreen Button -->
+
+<div id="questionContainer">
+    <div id="question"></div>
+    <div id="inputDisplay"></div> <!-- Display for input -->
+    <div id="progress"></div>
+    
+    <!-- Number Pad -->
+    <div class="numberPad">
+        <div class="numberGrid">
+            <button class="numberButton" onclick="addToInput(1)">1</button>
+            <button class="numberButton" onclick="addToInput(2)">2</button>
+            <button class="numberButton" onclick="addToInput(3)">3</button>
+            <button class="numberButton" onclick="addToInput(4)">4</button>
+            <button class="numberButton" onclick="addToInput(5)">5</button>
+            <button class="numberButton" onclick="addToInput(6)">6</button>
+            <button class="numberButton" onclick="addToInput(7)">7</button>
+            <button class="numberButton" onclick="addToInput(8)">8</button>
+            <button class="numberButton" onclick="addToInput(9)">9</button>
+        </div>
+        <button class="numberButton" onclick="addToInput(0)">0</button>
+        <button class="clearButton" onclick="clearInput()">Clear</button>
+    </div>
+</div>
+
+<script src="math-trainer.js"></script>
