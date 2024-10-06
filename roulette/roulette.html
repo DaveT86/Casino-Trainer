@@ -4,18 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Homepage</title>
-    <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Link to your CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Welcome to the Casino Games</h1>
+        <h1>Roulette</h1>
+        <div class="nav-buttons">
+            <button id="back-button">Back</button>
+            <button id="home-button">Home</button>
+        </div>
         <div class="button-container">
             <button id="math-trainer-button">Math Trainer</button>
             <button id="picture-bets-button">Picture Bets</button>
             <button id="wheel-button">Wheel</button>
             <button id="neighbours-button">Neighbours</button>
         </div>
+        <button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button>
     </div>
-    <script src="roulette.js"></script>
+    <footer>
+        © 2024 Dave.
+    </footer>
+    <script src="../assets/js/roulette.js"></script>
+    <script src="../assets/js/nav.js"></script>
+    <script src="../assets/js/fullscreen.js"></script>
 </body>
 </html>

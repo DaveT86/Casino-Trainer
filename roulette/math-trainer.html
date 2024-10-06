@@ -3,22 +3,26 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Game Homepage</title>
-        <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Link to your CSS -->
+        <title>Math Trainer</title>
+        <link rel="stylesheet" href="../assets/css/styles.css">
     </head>
-<h1>Math Trainer</h1>
+<body>
+<div class="container">
+    <h1>Math Trainer</h1>
+        <div class="nav-buttons">
+            <button id="back-button">Back</button>
+            <button id="home-button">Home</button>
+        </div>
 <button onclick="startNormalMode()">Normal Mode</button>
 <button onclick="startRouletteMode()">Roulette Mode</button>
 
-<button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button> <!-- Fullscreen Button -->
+<button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button>
 
-<div id="questionContainer">
-    <div id="question"></div>
-    <div id="inputDisplay"></div> <!-- Display for input -->
-    <div id="progress"></div>
-    
-    <!-- Number Pad -->
-    <div class="numberPad">
+    <div id="questionContainer">
+        <div id="question"></div>
+        <div id="inputDisplay"></div>
+        <div id="progress"></div>
+        <div class="numberPad">
         <div class="numberGrid">
             <button class="numberButton" onclick="addToInput(1)">1</button>
             <button class="numberButton" onclick="addToInput(2)">2</button>
@@ -32,7 +36,14 @@
         </div>
         <button class="numberButton" onclick="addToInput(0)">0</button>
         <button class="clearButton" onclick="clearInput()">Clear</button>
+        </div>
     </div>
 </div>
-
-<script src="math-trainer.js"></script>
+<footer>
+    © 2024 Dave.
+</footer>
+<script src="../assets/js/math-trainer.js"></script>
+<script src="../assets/js/nav.js"></script>
+<script src="../assets/js/fullscreen.js"></script>
+</body>
+</html>

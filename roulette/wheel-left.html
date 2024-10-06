@@ -4,26 +4,17 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wheel Trainer Left</title>
-        <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Link to your CSS -->
-        <style>
-            /* Add some basic styles for better visuals */
-            #previousNumbers {
-                margin: 20px 0;
-            }
-            .numberDisplay {
-                font-size: 24px; /* Larger font size */
-                display: inline-block;
-                padding: 10px;
-                margin: 2px;
-                border-radius: 5px; /* Optional: round the corners */
-                color: white; /* Text color for contrast */
-            }
-        </style>
+        <link rel="stylesheet" href="../assets/css/styles.css">
     </head>
     <body>
+    <div class="container"></div>
         <h1>Wheel Trainer Left</h1>
-        <button onclick="startMode()">Start Challenge</button> <!-- Button to start the challenge -->
-        <button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button> <!-- Fullscreen Button -->
+        <div class="nav-buttons">
+            <button id="back-button">Back</button>
+            <button id="home-button">Home</button>
+        </div>
+        <button onclick="startMode()">Start Challenge</button>
+        <button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button>
 
         <div id="questionContainer" style="display: none;">
             <div id="question">Input the next number:</div>
@@ -48,7 +39,14 @@
                 <button class="clearButton" onclick="clearInput()">Clear</button>
             </div>
         </div>
+    </div>
+        <footer>
+            © 2024 Dave.
+        </footer>
 
-        <script src="wheel-left.js"></script> <!-- Link to your JavaScript file -->
+
+        <script src="../assets/js/wheel-left.js"></script>
+        <script src="../assets/js/nav.js"></script>
+        <script src="../assets/js/fullscreen.js"></script>
     </body>
 </html>

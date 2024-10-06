@@ -7,11 +7,24 @@
         <link rel="stylesheet" href="../assets/css/styles.css"> <!-- Link to your CSS -->
     </head>
     <body>
+    <div class="container">
         <h1>Wheel Trainer</h1>
+        <div class="nav-buttons">
+            <button id="back-button">Back</button>
+            <button id="home-button">Home</button>
+        </div>
         <div class="button-container">
             <button id="wheel-right-button">Right</button>
             <button id="wheel-left-button">Left</button>
         </div>
-        <script src="wheel.js"></script>
+        <button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button>
+    </div>
+        <footer>
+            © 2024 Dave.
+        </footer>
+
+        <script src="../assets/js/wheel.js"></script>
+        <script src="../assets/js/nav.js"></script>
+        <script src="../assets/js/fullscreen.js"></script>
     </body>
 </html>
