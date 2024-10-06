@@ -56,4 +56,51 @@ button:hover {
     margin-top: 10px;
     min-height: 30px; /* For consistent spacing */
 }
-</style>
+
+/*picture bets */
+
+.grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px 100px; /* Four columns */
+    grid-template-rows: repeat(3, 100px); /* Three rows */
+    gap: 5px;
+    margin-bottom: 20px;
+}
+
+.cell {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #000;
+    text-align: center;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell-0 {
+    background-color: green;
+    grid-row: span 3; /* Make 0 span three rows */
+}
+
+.cell-1 { background-color: red; }
+.cell-2 { background-color: black; }
+.cell-3 { background-color: red; }
+.cell-4 { background-color: black; }
+.cell-5 { background-color: red; }
+.cell-6 { background-color: black; }
+.cell-7 { background-color: red; }
+.cell-8 { background-color: black; }
+.cell-9 { background-color: red; }
+
+/* Positioning the numbers */
+.cell:nth-child(1) { grid-column: 1; grid-row: span 3; } /* 0 */
+.cell:nth-child(2) { grid-column: 2; grid-row: 1; } /* 1 */
+.cell:nth-child(3) { grid-column: 3; grid-row: 1; } /* 4 */
+.cell:nth-child(4) { grid-column: 4; grid-row: 1; } /* 7 */
+.cell:nth-child(5) { grid-column: 2; grid-row: 2; } /* 2 */
+.cell:nth-child(6) { grid-column: 3; grid-row: 2; } /* 5 */
+.cell:nth-child(7) { grid-column: 4; grid-row: 2; } /* 8 */
+.cell:nth-child(8) { grid-column: 2; grid-row: 3; } /* 3 */
+.cell:nth-child(9) { grid-column: 3; grid-row: 3; } /* 6 */
+.cell:nth-child(10) { grid-column: 4; grid-row: 3; } /* 9 */
