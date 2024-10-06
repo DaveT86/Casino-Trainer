@@ -7,5 +7,5 @@ document.getElementById('blackjack-button').addEventListener('click', function()
 });
 
 document.getElementById('punto-banco-button').addEventListener('click', function() {
-    window.location.href = 'punto-banco.html'; // Redirect to Punto Banco page
+    window.location.href = 'punto/punto.html'; // Redirect to Punto Banco page
 });
