@@ -142,7 +142,7 @@ html, body {
 
 .container {
     flex: 1; /* This allows the main content to take up the remaining space */
-    margin-top: 60px;
+    margin-top: 40px;
 }
 
 footer {
@@ -238,8 +238,8 @@ button {
 /* neighbours */
 /* Keypad Button Styles */
 .keypad-button {
-    width: 60px;                /* Adjust width for better spacing */
-    height: 60px;               /* Adjust height for better touch targets */
+    width: 50px;                /* Adjust width for better spacing */
+    height: 50px;               /* Adjust height for better touch targets */
     font-size: 20px;            /* Keep the font size consistent */
     background-color: #3498db;  /* Match background color with other buttons */
     color: white;               /* White text for contrast */
@@ -252,12 +252,12 @@ button {
 
 /* Hover Effect */
 .keypad-button:hover {
-    background-color: #2980b9;  /* Darker shade on hover */
+    background-color: #e4e425;  /* Darker shade on hover */
 }
 
 /* Active Effect */
 .keypad-button:active {
-    background-color: #1f639b;  /* Even darker shade when clicked */
+    background-color: #888413;  /* Even darker shade when clicked */
 }
 
 /* Disabled State */
