@@ -252,12 +252,12 @@ button {
 
 /* Hover Effect */
 .keypad-button:hover {
-    background-color: #e4e425;  /* Darker shade on hover */
+    background-color: #e4e425;  
 }
 
 /* Active Effect */
 .keypad-button:active {
-    background-color: #888413;  /* Even darker shade when clicked */
+    background-color: #888413;  
 }
 
 /* Disabled State */
