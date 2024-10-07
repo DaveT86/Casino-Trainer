@@ -10,14 +10,11 @@
     <div class="container">
         <h1>Card Pulling</h1>
         <div class="nav-buttons">
+            <button id="fullscreenButton" onclick="toggleFullscreen()">Fullscreen</button>
             <button id="back-button">Back</button>
             <button id="home-button">Home</button>
         </div>
-        <button id="fullscreenButton" onclick="toggleFullscreen()">Toggle Fullscreen</button>
-        <body>
-            <h1>Punto Banco Dealer Simulation</h1>
-            <button id="toggleModeButton">Switch to Beginner Mode</button>
-            <button id="dealButton">Deal Initial Cards</button>
+            <button id="dealButton">Deal</button>
             <div id="output"></div>
         
             <div class="hands">
@@ -44,24 +41,6 @@
             </div>
         
             <div id="result" class="result"></div>
-        
-            <!-- Info Button for Tooltip -->
-            <button class="info-button" id="infoButton">i</button>
-            <div class="tooltip" id="tooltip">
-                <strong>Card-Pulling Rules:</strong><br>
-                <ul>
-                    <li>Player draws a third card if their score is 5 or less.</li>
-                    <li>Banker draws a third card based on the following conditions:</li>
-                    <ul>
-                        <li>Score of 2 or less: Draws a card.</li>
-                        <li>Score of 3: Draws unless Player has an 8.</li>
-                        <li>Score of 4: Draws if Player's score is 2-7.</li>
-                        <li>Score of 5: Draws if Player's score is 4-7.</li>
-                        <li>Score of 6: Draws if Player's score is 6 or 7.</li>
-                    </ul>
-                    <li>Natural win occurs with a score of 8 or 9 on the initial deal.</li>
-                </ul>
-            </div>
     </div>
     <footer>
         © 2024 Dave.

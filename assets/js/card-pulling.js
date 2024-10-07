@@ -42,8 +42,6 @@ class Deck {
     }
 }
 
-let isBeginnerMode = false; // Track current mode
-
 function calculateHandValue(hand) {
     const totalPoints = hand.reduce((acc, card) => acc + card.getPoints(), 0);
     return totalPoints % 10; // Only the last digit counts
@@ -80,34 +78,18 @@ function dealPuntoBanco() {
 
     displayHands();
     document.getElementById('buttons').style.display = 'block'; // Show buttons for further actions
-
-    // Automatically highlight the correct button in Beginner Mode
-    if (isBeginnerMode) {
-        const playerScore = calculateHandValue(window.playerHand);
-        const bankerScore = calculateHandValue(window.bankerHand);
-        const actualWinner = playerScore > bankerScore ? 'Player' : bankerScore > playerScore ? 'Banker' : 'Tie';
-
-        // Highlight the correct button based on the scores
-        const correctButton = actualWinner === 'Player' ? 'playerWin' : actualWinner === 'Banker' ? 'bankerWin' : 'tie';
-        document.getElementById(correctButton).classList.add('correct');
-
-        // Show tooltip for the correct button
-        showTooltip(correctButton, `Correct choice: ${actualWinner} wins!`);
-    }
 }
 
-function showTooltip(buttonId, message) {
-    const button = document.getElementById(buttonId);
-    const tooltip = document.getElementById('highlight-tooltip');
-    tooltip.innerHTML = message;
-    tooltip.style.left = button.getBoundingClientRect().left + 'px';
-    tooltip.style.top = (button.getBoundingClientRect().top - 30) + 'px'; // Position above the button
-    tooltip.style.display = 'block';
+function hasNaturalWin(playerHand, bankerHand) {
+    const playerScore = calculateHandValue(playerHand);
+    const bankerScore = calculateHandValue(bankerHand);
+    return playerScore === 8 || playerScore === 9 || bankerScore === 8 || bankerScore === 9;
 }
 
-function hideTooltip() {
-    const tooltip = document.getElementById('highlight-tooltip');
-    tooltip.style.display = 'none';
+function isHandComplete() {
+    // Hand is complete if either has a natural win or both have 3 cards
+    return hasNaturalWin(window.playerHand, window.bankerHand) || 
+           (window.playerHand.length === 3 && window.bankerHand.length === 3);
 }
 
 function canPlayerDraw(playerScore) {
@@ -129,6 +111,18 @@ function dealPlayerCard() {
         window.playerHand.push(window.deck.dealCard());
         displayHands();
         document.getElementById('output').innerHTML = ''; // Clear previous output
+
+        // Check if the Player has drawn their third card
+        if (window.playerHand.length === 3) {
+            // Check if the Banker can draw after the Player's third card is dealt
+            const bankerScore = calculateHandValue(window.bankerHand);
+            if (isHandComplete()) {
+                document.getElementById('output').innerHTML = '<span class="warning">Hand is complete, Banker cannot draw!</span>';
+                document.getElementById('dealBankerCard').disabled = true; // Prevent Banker from drawing
+            } else {
+                document.getElementById('dealBankerCard').disabled = false; // Banker can still draw if rules allow
+            }
+        }
     } else {
         document.getElementById('output').innerHTML = '<span class="error">Player cannot draw a card!</span>';
     }
@@ -138,6 +132,7 @@ function dealBankerCard() {
     const playerScore = calculateHandValue(window.playerHand);
     const bankerScore = calculateHandValue(window.bankerHand);
 
+    // Ensure the Banker can draw before adding a card
     if (canBankerDraw(playerScore, bankerScore)) {
         window.bankerHand.push(window.deck.dealCard());
         displayHands();
@@ -148,6 +143,12 @@ function dealBankerCard() {
 }
 
 function declareResult(winner) {
+    // Check if the hand is complete
+    if (!isHandComplete()) {
+        document.getElementById('output').innerHTML = '<span class="error">You cannot declare a winner until the hand is complete!</span>';
+        return;
+    }
+
     const playerScore = calculateHandValue(window.playerHand);
     const bankerScore = calculateHandValue(window.bankerHand);
 
@@ -160,44 +161,19 @@ function declareResult(winner) {
         actualWinner = 'Tie';
     }
 
-    const naturalWin = (playerScore === 8 || playerScore === 9 || bankerScore === 8 || bankerScore === 9);
-    if (naturalWin) {
+    // Check for a natural win
+    if (hasNaturalWin(window.playerHand, window.bankerHand)) {
         document.getElementById('result').innerHTML = `<span class="result">${winner} wins by natural! (Actual: ${actualWinner})</span>`;
     } else {
         document.getElementById('result').innerHTML = `<span class="result">${winner} wins! (Actual: ${actualWinner})</span>`;
     }
 
+    // Check if the user's declaration is correct
     if (winner !== actualWinner) {
-        document.getElementById('result').innerHTML += '<br><span class="error">Your declaration was incorrect!</span>';
+        document.getElementById('result').innerHTML += '<br><span class="error">Try Again</span>';
     } else {
-        document.getElementById('result').innerHTML += '<br><span class="result">Your declaration was correct!</span>';
-        // Highlight correct button in Beginner Mode
-        if (isBeginnerMode) {
-            document.getElementById(winner === 'Player' ? 'playerWin' : 'bankerWin').classList.add('correct');
-            provideExplanation(winner, playerScore, bankerScore);
-        }
+        document.getElementById('result').innerHTML += '<br><span class="result">Correct!</span>';
     }
-}
-
-function provideExplanation(winner, playerScore, bankerScore) {
-    let explanation = '';
-    if (winner === 'Player') {
-        if (playerScore === 8 || playerScore === 9) {
-            explanation = `Player wins because they have a natural ${playerScore}.`;
-        } else {
-            explanation = `Player wins because their score is ${playerScore}, and the banker’s score is ${bankerScore}.`;
-        }
-    } else if (winner === 'Banker') {
-        if (bankerScore === 8 || bankerScore === 9) {
-            explanation = `Banker wins because they have a natural ${bankerScore}.`;
-        } else {
-            explanation = `Banker wins because their score is ${bankerScore}, and the player’s score is ${playerScore}.`;
-        }
-    } else {
-        explanation = `It's a tie! Both player and banker have a score of ${playerScore}.`;
-    }
-
-    document.getElementById('output').innerHTML = explanation; // Display explanation in output area
 }
 
 // Event listeners
@@ -207,24 +183,3 @@ document.getElementById('dealBankerCard').addEventListener('click', dealBankerCa
 document.getElementById('playerWin').addEventListener('click', () => declareResult('Player'));
 document.getElementById('bankerWin').addEventListener('click', () => declareResult('Banker'));
 document.getElementById('tie').addEventListener('click', () => declareResult('Tie'));
-
-// Mode Toggle
-document.getElementById('toggleModeButton').addEventListener('click', () => {
-    isBeginnerMode = !isBeginnerMode;
-    document.getElementById('toggleModeButton').innerText = isBeginnerMode ? 'Switch to Training Mode' : 'Switch to Beginner Mode';
-    document.getElementById('result').innerHTML = ''; // Clear results when switching modes
-    // Remove highlight from buttons
-    document.querySelectorAll('.correct').forEach(button => button.classList.remove('correct'));
-});
-
-// Tooltip functionality
-const infoButton = document.getElementById('infoButton');
-const tooltip = document.getElementById('tooltip');
-
-infoButton.addEventListener('mouseover', () => {
-    tooltip.style.display = 'block';
-});
-
-infoButton.addEventListener('mouseout', () => {
-    tooltip.style.display = 'none';
-});

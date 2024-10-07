@@ -151,3 +151,130 @@ footer {
     text-align: center;
     padding: 10px;
 }
+
+/*Punto card pulling */
+
+#output {
+    margin-top: 20px;
+    font-size: 18px;
+    color: #555;
+}
+.hands {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.hand {
+    width: 45%;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #fff;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+button {
+    margin: 5px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+.error {
+    color: red;
+    font-weight: bold;
+}
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.info-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+    white-space: nowrap;
+}
+.disabled {
+    background-color: #ddd;
+    color: #aaa;
+    cursor: not-allowed;
+}
+.correct {
+    background-color: lightgreen;
+}
+.highlight-tooltip {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 5px;
+    z-index: 10;
+    white-space: nowrap;
+}
+
+/* neighbours */
+/* Keypad Button Styles */
+.keypad-button {
+    width: 60px;                /* Adjust width for better spacing */
+    height: 60px;               /* Adjust height for better touch targets */
+    font-size: 20px;            /* Keep the font size consistent */
+    background-color: #3498db;  /* Match background color with other buttons */
+    color: white;               /* White text for contrast */
+    border: none;               /* Remove default border */
+    border-radius: 5px;        /* Rounded corners for a softer look */
+    cursor: pointer;            /* Pointer cursor on hover */
+    margin: 5px;               /* Space between buttons */
+    transition: background-color 0.3s; /* Smooth background transition */
+}
+
+/* Hover Effect */
+.keypad-button:hover {
+    background-color: #2980b9;  /* Darker shade on hover */
+}
+
+/* Active Effect */
+.keypad-button:active {
+    background-color: #1f639b;  /* Even darker shade when clicked */
+}
+
+/* Disabled State */
+.keypad-button:disabled {
+    background-color: #ddd;      /* Grey out disabled buttons */
+    color: #aaa;                 /* Lighten text color for disabled state */
+    cursor: not-allowed;         /* Change cursor to not-allowed */
+}
+
+/* Correct Answer Highlight */
+.keypad-button.correct {
+    background-color: lightgreen; /* Highlight correct answers */
+}
+
+/* Incorrect Answer Highlight */
+.keypad-button.incorrect {
+    background-color: red;        /* Highlight incorrect answers */
+}
+#answerDisplay {
+    padding-bottom: 20px;
