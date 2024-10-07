@@ -142,7 +142,7 @@ html, body {
 
 .container {
     flex: 1; /* This allows the main content to take up the remaining space */
-    margin-top: 60px;
+    margin-top: 75px;
 }
 
 footer {
